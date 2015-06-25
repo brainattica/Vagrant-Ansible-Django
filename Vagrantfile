@@ -19,5 +19,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # your network.
   config.vm.network "public_network", ip: "192.168.1.150"
 
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provision/playbook.yml"
+    ansible.host_key_checking = false
+    ansible.verbose = "vvvv"
+  end
+
   
 end

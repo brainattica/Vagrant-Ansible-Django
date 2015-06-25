@@ -1,0 +1,40 @@
+project_name: Django
+application_name: Django
+
+db_user: brainattica
+db_name: brainattica_db
+db_password: brainattica
+
+django_settings_file: brainattica.settings.local_vagrant
+django_secret_key: -1ou6khysyqk0_!8k13*dhynl9!aaif8toa!@08z6dwsul5ytn
+
+smtp_host: smtp.gmail.com
+smtp_user: admin@example.com
+smtp_password: mypassword
+
+django_environment:
+  DJANGO_SETTINGS_MODULE: "{{ django_settings_file }}"
+  DJANGO_SECRET_KEY: "{{ django_secret_key }}"
+  EMAIL_HOST: "{{ smtp_host }}"
+  EMAIL_HOST_USER: "{{ smtp_user }}"
+  EMAIL_HOST_PASSWORD: "{{ smtp_password }}"
+  DATABASE_USER: "{{ db_user }}"
+  DATABASE_PASSWORD: "{{ db_password }}"
+
+# RabbitMQ settings.
+rabbitmq_server_name: "{{ project_name }}"
+
+rabbitmq_admin_user: admin
+rabbitmq_admin_password: Brainattica
+
+rabbitmq_application_vhost: brainattica_host
+rabbitmq_application_user: brainattica
+rabbitmq_application_password: brainattica
+
+# Celery settings.
+celery_num_workers: 2
+celery_application_settings_file: brainattica.settings.local_vagrant
+
+run_django_syncdb: no
+run_django_migration: yes
+run_django_collectstatic: no
