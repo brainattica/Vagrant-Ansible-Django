@@ -1,0 +1,12 @@
+---
+
+- name: Install packages required by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
+
+- name: Sync Django database.
+  shell: ". {{ virtualenv_path }}/bin/activate && . {{ virtualenv_path }}/bin/postactivate && {{ virtualenv_path }}/bin/python {{ project_path }}/manage.py syncdb --migrate --noinput"
+  when: run_django_syncdb
+
+- name: Sync Django database.
+  shell: ". {{ virtualenv_path }}/bin/activate && . {{ virtualenv_path }}/bin/postactivate && {{ virtualenv_path }}/bin/python {{ project_path }}/manage.py migrate --noinput"
+  when: run_django_migration

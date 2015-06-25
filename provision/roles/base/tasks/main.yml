@@ -13,6 +13,27 @@
     - ntp
     - htop
     - git
-    - meld 
-    - mercurial
+    - python-dev
+    - python-pip
+    - python3-dev
+    - python3-pip
+    - python-pycurl
+    - supervisor
+    - git
+    - libncurses5-dev
+    - libevent-dev
+    - libffi-dev
+    - vim
+    - python-all-dev
+    - virtualenvwrapper
+  tags: packages
+
+- name: Install base packages easy_install
+  easy_install: name=greenlet
+
+- name: Install base packages easy_install
+  easy_install: name=gevent
+
+- name: Install virtualenv
+  pip: name=virtualenv
   tags: packages
